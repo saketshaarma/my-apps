@@ -1,16 +1,17 @@
 pipeline {
     agent any
+    tools {
+      maven 'Maven 3.6.1'
+    }
     stages {
         stage('---Maven Clean---'){
             steps {
-                def mvnHome = tool name: 'maven-3', type: 'maven'
-                ${mvnHome/bin/mvn} clean install
+              sh 'mv clean install'
             }
         }
         stage('---Maven Deploy---'){
           steps {
-              def mvnHome = tool name: 'maven-3', type: 'maven'
-                ${mvnHome/bin/mvn} deploy
+            sh 'mv clean deploy'
           }
         }
     }
