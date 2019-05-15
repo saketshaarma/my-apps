@@ -3,12 +3,14 @@ pipeline {
     stages {
         stage('---Maven Clean---'){
             steps {
-                mvn clean install
+                def mvnHome = tool name: 'maven-3', type: 'maven'
+                ${mvnHome/bin/mvn} clean install
             }
         }
         stage('---Maven Deploy---'){
           steps {
-              mvn deploy
+              def mvnHome = tool name: 'maven-3', type: 'maven'
+                ${mvnHome/bin/mvn} deploy
           }
         }
     }
