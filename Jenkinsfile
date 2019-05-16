@@ -4,14 +4,8 @@ pipeline {
         stage('---Maven Clean---'){
             steps {
               withMaven(maven: 'maven-3')
-              sh 'mvn clean install'
+              sh 'mvn clean deploy'
             }
         }
-        stage('---Maven Deploy---'){
-          steps {
-            withMaven(maven: 'maven-3')
-            sh 'mvn clean deploy'
-          }
         }
-    }
 }
